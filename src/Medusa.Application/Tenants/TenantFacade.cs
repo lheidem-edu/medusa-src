@@ -28,11 +28,16 @@ public class TenantFacade : ITenantFacade
     }
 
     /// <inheritdoc />
-    public async Task<TenantModel?> GetTenantAsync(Guid tenantId, CancellationToken cancellationToken = default)
+    public async Task<TenantModel> GetTenantAsync(Guid tenantId, CancellationToken cancellationToken = default)
     {
         var tenant = await _tenantRepository.GetTenantAsync(tenantId, cancellationToken);
 
-        return tenant == null ? null : new TenantModel
+        if (tenant == null)
+        {
+            throw new KeyNotFoundException($"Tenant with unique identifier {tenantId} not found.");
+        }
+
+        return new TenantModel
         {
             Id = tenant.Id,
             Country = tenant.Country,

@@ -19,7 +19,7 @@ public interface IDeviceFacade
     /// <param name="deviceId">The unique identifier of the device to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="DeviceModel" /> object representing the device with the specified identifier, or null if not found.</returns>
-    Task<DeviceModel?> GetDeviceAsync(Guid tenantId, Guid deviceId, CancellationToken cancellationToken = default);
+    Task<DeviceModel> GetDeviceAsync(Guid tenantId, Guid deviceId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a new device.
@@ -65,7 +65,7 @@ public interface IDeviceFacade
     /// <param name="deviceActivityId">The unique identifier of the device activity to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="DeviceActivityModel" /> object representing the device activity with the specified identifier, or null if not found.</returns>
-    Task<DeviceActivityModel?> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId, CancellationToken cancellationToken = default);
+    Task<DeviceActivityModel> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a new device activity.

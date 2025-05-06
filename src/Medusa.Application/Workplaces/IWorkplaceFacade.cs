@@ -19,7 +19,7 @@ public interface IWorkplaceFacade
     /// <param name="workplaceId">The unique identifier of the workplace to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="WorkplaceModel" /> object representing the workplace with the specified identifier, or null if not found.</returns>
-    Task<WorkplaceModel?> GetWorkplaceAsync(Guid tenantId, Guid workplaceId, CancellationToken cancellationToken = default);
+    Task<WorkplaceModel> GetWorkplaceAsync(Guid tenantId, Guid workplaceId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a new workplace.

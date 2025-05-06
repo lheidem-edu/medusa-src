@@ -29,13 +29,13 @@ public class WorkplaceFacade : IWorkplaceFacade
     }
 
     /// <inheritdoc />
-    public async Task<WorkplaceModel?> GetWorkplaceAsync(Guid tenantId, Guid workplaceId, CancellationToken cancellationToken = default)
+    public async Task<WorkplaceModel> GetWorkplaceAsync(Guid tenantId, Guid workplaceId, CancellationToken cancellationToken = default)
     {
         var workplace = await _workplaceRepository.GetWorkplaceAsync(workplaceId, cancellationToken);
 
         if (workplace == null || workplace.TenantId != tenantId)
         {
-            return null;
+            throw new InvalidOperationException($"Workplace with unique identifier {workplaceId} not found.");
         }
 
         return new WorkplaceModel

@@ -31,13 +31,13 @@ public class DeviceFacade : IDeviceFacade
     }
 
     /// <inheritdoc />
-    public async Task<DeviceModel?> GetDeviceAsync(Guid tenantId, Guid deviceId, CancellationToken cancellationToken = default)
+    public async Task<DeviceModel> GetDeviceAsync(Guid tenantId, Guid deviceId, CancellationToken cancellationToken = default)
     {
         var device = await _deviceRepository.GetDeviceAsync(deviceId, cancellationToken);
 
         if (device == null || device.TenantId != tenantId)
         {
-            return null;
+            throw new KeyNotFoundException($"Device with unique identifier {deviceId} not found.");
         }
 
         return new DeviceModel
@@ -138,7 +138,7 @@ public class DeviceFacade : IDeviceFacade
     }
 
     /// <inheritdoc />
-    public async Task<DeviceActivityModel?> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId,
+    public async Task<DeviceActivityModel> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId,
         CancellationToken cancellationToken = default)
     {
         var device = await _deviceRepository.GetDeviceAsync(deviceId, cancellationToken);
@@ -152,7 +152,7 @@ public class DeviceFacade : IDeviceFacade
 
         if (activity == null || activity.DeviceId != deviceId)
         {
-            return null;
+            throw new KeyNotFoundException($"Device activity with unique identifier {deviceActivityId} not found.");
         }
 
         return new DeviceActivityModel

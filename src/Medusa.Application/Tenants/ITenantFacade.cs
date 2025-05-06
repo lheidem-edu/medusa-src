@@ -17,7 +17,7 @@ public interface ITenantFacade
     /// <param name="tenantId">The unique identifier of the tenant to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="TenantModel" /> object representing the tenant with the specified identifier, or null if not found.</returns>
-    Task<TenantModel?> GetTenantAsync(Guid tenantId, CancellationToken cancellationToken = default);
+    Task<TenantModel> GetTenantAsync(Guid tenantId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a new tenant.
