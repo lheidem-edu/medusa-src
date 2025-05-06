@@ -1,5 +1,8 @@
 namespace Medusa.Domain.Tenants;
 
+/// <summary>
+///     A repository interface for managing tenant entities.
+/// </summary>
 public interface ITenantRepository
 {
     /// <summary>
