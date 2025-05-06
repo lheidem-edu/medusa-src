@@ -76,6 +76,8 @@ public class TenantFacade : ITenantFacade
         tenant.Country = updateTenantModel.Country ?? tenant.Country;
         tenant.Name = updateTenantModel.Name ?? tenant.Name;
 
+        tenant.UpdatedAt = DateTime.UtcNow;
+
         await _tenantRepository.UpdateTenantAsync(tenant, cancellationToken);
     }
 

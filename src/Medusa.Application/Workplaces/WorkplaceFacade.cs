@@ -86,6 +86,8 @@ public class WorkplaceFacade : IWorkplaceFacade
         workplace.Enabled = updateWorkplaceModel.Enabled ?? workplace.Enabled;
         workplace.Name = updateWorkplaceModel.Name ?? workplace.Name;
 
+        workplace.UpdatedAt = DateTime.UtcNow;
+
         await _workplaceRepository.UpdateWorkplaceAsync(workplace, cancellationToken);
     }
 

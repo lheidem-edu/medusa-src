@@ -96,6 +96,8 @@ public class DeviceFacade : IDeviceFacade
         device.Description = updateDeviceModel.Description ?? device.Description;
         device.Location = updateDeviceModel.Location ?? device.Location;
 
+        device.UpdatedAt = DateTime.UtcNow;
+
         await _deviceRepository.UpdateDeviceAsync(device, cancellationToken);
     }
 
