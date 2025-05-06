@@ -6,13 +6,6 @@ namespace Medusa.Domain.Devices;
 public interface IDeviceRepository
 {
     /// <summary>
-    ///     Retrieves all devices.
-    /// </summary>
-    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    /// <returns>A collection of <see cref="Device" /> objects representing all devices in the system.</returns>
-    Task<IReadOnlyCollection<Device>> GetDevicesAsync(CancellationToken cancellationToken = default);
-
-    /// <summary>
     ///     Retrieves all devices associated with a specific tenant.
     /// </summary>
     /// <param name="tenantId">The unique identifier of the tenant whose devices to retrieve.</param>
@@ -52,14 +45,7 @@ public interface IDeviceRepository
     Task<bool> DeleteDeviceAsync(Guid deviceId, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Retrieves all device activities.
-    /// </summary>
-    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    /// <returns>A collection of <see cref="DeviceActivity" /> objects representing all device activities in the system.</returns>
-    Task<IReadOnlyCollection<DeviceActivity>> GetDeviceActivitiesAsync(CancellationToken cancellationToken = default);
-
-    /// <summary>
-    ///     Retrieves all activities for a specific device.
+    ///     Retrieves all activities associated with a specific device.
     /// </summary>
     /// <param name="deviceId">The unique identifier of the device whose activities to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
