@@ -26,5 +26,5 @@ public class DeviceModel
     public required DateTime CreatedAt { get; init; }
 
     [JsonPropertyName("device_updated_at")]
-    public required DateTime UpdatedAt { get; set; }
+    public required DateTime UpdatedAt { get; init; }
 }

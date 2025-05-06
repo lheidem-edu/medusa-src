@@ -17,5 +17,5 @@ public class TenantModel
     public required DateTime CreatedAt { get; init; }
 
     [JsonPropertyName("tenant_updated_at")]
-    public required DateTime UpdatedAt { get; set; }
+    public required DateTime UpdatedAt { get; init; }
 }

@@ -20,5 +20,5 @@ public class WorkplaceModel
     public required DateTime CreatedAt { get; init; }
 
     [JsonPropertyName("workplace_updated_at")]
-    public required DateTime UpdatedAt { get; set; }
+    public required DateTime UpdatedAt { get; init; }
 }
