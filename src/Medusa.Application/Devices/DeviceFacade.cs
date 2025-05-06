@@ -1,7 +1,7 @@
 using Medusa.Domain.Devices;
 using Medusa.Presentation.Devices;
 
-namespace Medusa.Application;
+namespace Medusa.Application.Devices;
 
 public class DeviceFacade : IDeviceFacade
 {

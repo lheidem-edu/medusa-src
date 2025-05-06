@@ -1,6 +1,6 @@
 using Medusa.Presentation.Tenants;
 
-namespace Medusa.Application;
+namespace Medusa.Application.Tenants;
 
 public interface ITenantFacade
 {

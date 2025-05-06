@@ -1,6 +1,6 @@
 using Medusa.Presentation.Devices;
 
-namespace Medusa.Application;
+namespace Medusa.Application.Devices;
 
 public interface IDeviceFacade
 {

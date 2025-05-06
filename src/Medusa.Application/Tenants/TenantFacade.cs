@@ -1,7 +1,7 @@
 using Medusa.Domain.Tenants;
 using Medusa.Presentation.Tenants;
 
-namespace Medusa.Application;
+namespace Medusa.Application.Tenants;
 
 public class TenantFacade : ITenantFacade
 {
