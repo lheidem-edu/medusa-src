@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Medusa.Domain.Devices;
 
+/// <summary>
+///     This class represents a device in the system.
+/// </summary>
 [Table("devices", Schema = "public")]
 public class Device : IAuditable, IIdentifiable
 {

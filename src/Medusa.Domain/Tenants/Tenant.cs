@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Medusa.Domain.Tenants;
 
+/// <summary>
+///     This class represents a tenant in the system.
+/// </summary>
 [Table("tenants", Schema = "public")]
 public class Tenant : IAuditable, IIdentifiable
 {
