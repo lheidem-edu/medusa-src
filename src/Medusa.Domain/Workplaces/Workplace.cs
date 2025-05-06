@@ -9,7 +9,7 @@ public class Workplace : IAuditable, IIdentifiable
     ///     The unique identifier for the workplace.
     /// </summary>
     [Column("workplace_id")]
-    public required Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The unique identifier for the tenant associated with this workplace.
@@ -33,11 +33,11 @@ public class Workplace : IAuditable, IIdentifiable
     ///     The date and time when the workplace was created.
     /// </summary>
     [Column("workplace_created_at")]
-    public required DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     The date and time when the workplace was last updated.
     /// </summary>
     [Column("workplace_updated_at")]
-    public required DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

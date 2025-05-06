@@ -12,7 +12,7 @@ public class DeviceActivity : IAuditable, IIdentifiable
     ///     The unique identifier for the device activity.
     /// </summary>
     [Column("device_activity_id")]
-    public required Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The unique identifier for the device associated with this activity.
@@ -30,11 +30,11 @@ public class DeviceActivity : IAuditable, IIdentifiable
     ///     The date and time when the device activity was created.
     /// </summary>
     [Column("device_activity_created_at")]
-    public required DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     The date and time when the device activity was last updated.
     /// </summary>
     [Column("device_activity_updated_at")]
-    public required DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

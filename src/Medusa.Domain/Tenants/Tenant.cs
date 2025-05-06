@@ -12,7 +12,7 @@ public class Tenant : IAuditable, IIdentifiable
     ///     The unique identifier for the tenant.
     /// </summary>
     [Column("tenant_id")]
-    public required Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The country code where the tenant is located.
@@ -30,11 +30,11 @@ public class Tenant : IAuditable, IIdentifiable
     ///     The date and time when the tenant was created.
     /// </summary>
     [Column("tenant_created_at")]
-    public required DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     The date and time when the tenant was last updated.
     /// </summary>
     [Column("tenant_updated_at")]
-    public required DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

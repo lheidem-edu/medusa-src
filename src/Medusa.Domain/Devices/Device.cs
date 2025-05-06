@@ -12,7 +12,7 @@ public class Device : IAuditable, IIdentifiable
     ///     The unique identifier for the device.
     /// </summary>
     [Column("device_id")]
-    public required Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The unique identifier for the tenant associated with this device.
@@ -48,11 +48,11 @@ public class Device : IAuditable, IIdentifiable
     ///     The date and time when the device was created.
     /// </summary>
     [Column("device_created_at")]
-    public required DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     The date and time when the device was last updated.
     /// </summary>
     [Column("device_updated_at")]
-    public required DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }
