@@ -50,6 +50,13 @@ public class TenantFacade : ITenantFacade
     /// <inheritdoc />
     public async Task<TenantModel> CreateTenantAsync(CreateTenantModel createTenantModel, CancellationToken cancellationToken = default)
     {
+        var existingTenant = await _tenantRepository.GetTenantByNameAsync(createTenantModel.Name, cancellationToken);
+
+        if (existingTenant != null)
+        {
+            throw new InvalidOperationException($"Tenant with name {createTenantModel.Name} already exists.");
+        }
+
         var tenant = new Tenant
         {
             Country = createTenantModel.Country,
@@ -78,8 +85,22 @@ public class TenantFacade : ITenantFacade
             throw new KeyNotFoundException($"Tenant with unique identifier {tenantId} not found.");
         }
 
-        tenant.Country = updateTenantModel.Country ?? tenant.Country;
-        tenant.Name = updateTenantModel.Name ?? tenant.Name;
+        if (!string.IsNullOrWhiteSpace(updateTenantModel.Country))
+        {
+            tenant.Country = updateTenantModel.Country;
+        }
+
+        if (!string.IsNullOrWhiteSpace(updateTenantModel.Name))
+        {
+            var existingTenant = await _tenantRepository.GetTenantByNameAsync(updateTenantModel.Name, cancellationToken);
+
+            if (existingTenant != null && existingTenant.Id != tenantId)
+            {
+                throw new InvalidOperationException($"Tenant with name {updateTenantModel.Name} already exists.");
+            }
+
+            tenant.Name = updateTenantModel.Name;
+        }
 
         tenant.UpdatedAt = DateTime.UtcNow;
 

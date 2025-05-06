@@ -21,6 +21,14 @@ public interface ITenantRepository
     Task<Tenant?> GetTenantAsync(Guid tenantId, CancellationToken cancellationToken = default);
 
     /// <summary>
+    ///     Retrieves a tenant by its name.
+    /// </summary>
+    /// <param name="name">The name of the tenant to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>A <see cref="Tenant" /> object representing the tenant with the specified name, or null if not found.</returns>
+    Task<Tenant?> GetTenantByNameAsync(string name, CancellationToken cancellationToken = default);
+
+    /// <summary>
     ///     Adds a new tenant.
     /// </summary>
     /// <param name="tenant">The <see cref="Tenant" /> object representing the tenant to add.</param>
