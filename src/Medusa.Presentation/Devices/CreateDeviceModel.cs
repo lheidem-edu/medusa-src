@@ -4,9 +4,6 @@ namespace Medusa.Presentation.Devices;
 
 public class CreateDeviceModel
 {
-    [JsonPropertyName("device_tenant_id")]
-    public required Guid TenantId { get; set; }
-
     [JsonPropertyName("device_serial_number")]
     public required string SerialNumber { get; set; }
 
