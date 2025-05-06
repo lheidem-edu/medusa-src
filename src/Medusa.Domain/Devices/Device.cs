@@ -12,7 +12,7 @@ public class Device : IAuditable, IIdentifiable
     ///     The unique identifier for the device.
     /// </summary>
     [Column("device_id")]
-    public required Guid Id { get; init; }
+    public required Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The unique identifier for the tenant associated with this device.

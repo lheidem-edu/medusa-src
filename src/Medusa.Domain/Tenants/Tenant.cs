@@ -12,7 +12,7 @@ public class Tenant : IAuditable, IIdentifiable
     ///     The unique identifier for the tenant.
     /// </summary>
     [Column("tenant_id")]
-    public required Guid Id { get; init; }
+    public required Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
     ///     The country code where the tenant is located.
