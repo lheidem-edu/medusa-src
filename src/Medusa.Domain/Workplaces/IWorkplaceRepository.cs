@@ -1,5 +1,8 @@
 namespace Medusa.Domain.Workplaces;
 
+/// <summary>
+///     A repository interface for managing workplace entities.
+/// </summary>
 public interface IWorkplaceRepository
 {
     /// <summary>
