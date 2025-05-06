@@ -56,6 +56,13 @@ public class DeviceFacade : IDeviceFacade
     /// <inheritdoc />
     public async Task<DeviceModel> CreateDeviceAsync(Guid tenantId, CreateDeviceModel createDeviceModel, CancellationToken cancellationToken = default)
     {
+        var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(createDeviceModel.SerialNumber, cancellationToken);
+
+        if (existingDevice != null)
+        {
+            throw new InvalidOperationException($"Device with serial number {createDeviceModel.SerialNumber} already exists.");
+        }
+
         var device = new Device
         {
             TenantId = tenantId,
@@ -91,7 +98,18 @@ public class DeviceFacade : IDeviceFacade
             throw new KeyNotFoundException($"Device with unique identifier {deviceId} not found.");
         }
 
-        device.SerialNumber = updateDeviceModel.SerialNumber ?? device.SerialNumber;
+        if (!string.IsNullOrWhiteSpace(updateDeviceModel.SerialNumber))
+        {
+            var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(updateDeviceModel.SerialNumber, cancellationToken);
+
+            if (existingDevice != null && existingDevice.Id != deviceId)
+            {
+                throw new InvalidOperationException($"Device with serial number {updateDeviceModel.SerialNumber} already exists.");
+            }
+
+            device.SerialNumber = updateDeviceModel.SerialNumber;
+        }
+
         device.Name = updateDeviceModel.Name ?? device.Name;
         device.Description = updateDeviceModel.Description ?? device.Description;
         device.Location = updateDeviceModel.Location ?? device.Location;

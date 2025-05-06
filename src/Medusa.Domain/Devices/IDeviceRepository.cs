@@ -22,6 +22,14 @@ public interface IDeviceRepository
     Task<Device?> GetDeviceAsync(Guid deviceId, CancellationToken cancellationToken = default);
 
     /// <summary>
+    ///     Retrieves a device by its serial number.
+    /// </summary>
+    /// <param name="serialNumber">The serial number of the device to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>A <see cref="Device" /> object representing the device with the specified serial number, or null if not found.</returns>
+    Task<Device?> GetDeviceBySerialNumberAsync(string serialNumber, CancellationToken cancellationToken = default);
+
+    /// <summary>
     ///     Adds a new device.
     /// </summary>
     /// <param name="device">The <see cref="Device" /> object representing the device to add.</param>
