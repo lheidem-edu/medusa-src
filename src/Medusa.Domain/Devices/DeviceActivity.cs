@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Medusa.Domain.Devices;
 
+/// <summary>
+///     This class represents a device activity in the system.
+/// </summary>
 [Table("device_activities", Schema = "public")]
 public class DeviceActivity : IAuditable, IIdentifiable
 {
