@@ -6,7 +6,7 @@ public interface IAuditable
     ///     The date and time when the entity was created.
     /// </summary>
     /// <remarks>
-    ///     This property is typically set when the entity is first created and should not be modified afterwards.
+    ///     This property is typically set when the entity is first created and should not be modified afterward.
     /// </remarks>
     DateTime CreatedAt { get; init; }
 
