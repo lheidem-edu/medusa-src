@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medusa", "src\Medusa\Medusa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medusa.Application", "src\Medusa.Application\Medusa.Application.csproj", "{02B6CBB0-B5A4-4ED7-98C7-8F65792B0E7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medusa.Infrastructure", "Medusa.Infrastructure\Medusa.Infrastructure.csproj", "{F90C8FDB-7CD7-4A1A-89B5-D1B45CDE0583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{02B6CBB0-B5A4-4ED7-98C7-8F65792B0E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B6CBB0-B5A4-4ED7-98C7-8F65792B0E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02B6CBB0-B5A4-4ED7-98C7-8F65792B0E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90C8FDB-7CD7-4A1A-89B5-D1B45CDE0583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90C8FDB-7CD7-4A1A-89B5-D1B45CDE0583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90C8FDB-7CD7-4A1A-89B5-D1B45CDE0583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90C8FDB-7CD7-4A1A-89B5-D1B45CDE0583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
