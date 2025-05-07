@@ -48,19 +48,19 @@ public class TenantFacade : ITenantFacade
     }
 
     /// <inheritdoc />
-    public async Task<TenantModel> CreateTenantAsync(CreateTenantModel createTenantModel, CancellationToken cancellationToken = default)
+    public async Task<TenantModel> CreateTenantAsync(CreateTenantModel model, CancellationToken cancellationToken = default)
     {
-        var existingTenant = await _tenantRepository.GetTenantByNameAsync(createTenantModel.Name, cancellationToken);
+        var existingTenant = await _tenantRepository.GetTenantByNameAsync(model.Name, cancellationToken);
 
         if (existingTenant != null)
         {
-            throw new InvalidOperationException($"Tenant with name {createTenantModel.Name} already exists.");
+            throw new InvalidOperationException($"Tenant with name {model.Name} already exists.");
         }
 
         var tenant = new Tenant
         {
-            Country = createTenantModel.Country,
-            Name = createTenantModel.Name,
+            Country = model.Country,
+            Name = model.Name,
         };
 
         await _tenantRepository.AddTenantAsync(tenant, cancellationToken);
@@ -76,7 +76,7 @@ public class TenantFacade : ITenantFacade
     }
 
     /// <inheritdoc />
-    public async Task UpdateTenantAsync(Guid tenantId, UpdateTenantModel updateTenantModel, CancellationToken cancellationToken = default)
+    public async Task UpdateTenantAsync(Guid tenantId, UpdateTenantModel model, CancellationToken cancellationToken = default)
     {
         var tenant = await _tenantRepository.GetTenantAsync(tenantId, cancellationToken);
 
@@ -85,21 +85,21 @@ public class TenantFacade : ITenantFacade
             throw new KeyNotFoundException($"Tenant with unique identifier {tenantId} not found.");
         }
 
-        if (!string.IsNullOrWhiteSpace(updateTenantModel.Country))
+        if (!string.IsNullOrWhiteSpace(model.Country))
         {
-            tenant.Country = updateTenantModel.Country;
+            tenant.Country = model.Country;
         }
 
-        if (!string.IsNullOrWhiteSpace(updateTenantModel.Name))
+        if (!string.IsNullOrWhiteSpace(model.Name))
         {
-            var existingTenant = await _tenantRepository.GetTenantByNameAsync(updateTenantModel.Name, cancellationToken);
+            var existingTenant = await _tenantRepository.GetTenantByNameAsync(model.Name, cancellationToken);
 
             if (existingTenant != null && existingTenant.Id != tenantId)
             {
-                throw new InvalidOperationException($"Tenant with name {updateTenantModel.Name} already exists.");
+                throw new InvalidOperationException($"Tenant with name {model.Name} already exists.");
             }
 
-            tenant.Name = updateTenantModel.Name;
+            tenant.Name = model.Name;
         }
 
         tenant.UpdatedAt = DateTime.UtcNow;

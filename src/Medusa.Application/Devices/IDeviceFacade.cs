@@ -25,19 +25,19 @@ public interface IDeviceFacade
     ///     Creates a new device.
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the device against.</param>
-    /// <param name="createDeviceModel">The <see cref="CreateDeviceModel" /> object representing the device to create.</param>
+    /// <param name="model">The <see cref="CreateDeviceModel" /> object representing the device to create.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The created <see cref="DeviceModel" /> object.</returns>
-    Task<DeviceModel> CreateDeviceAsync(Guid tenantId, CreateDeviceModel createDeviceModel, CancellationToken cancellationToken = default);
+    Task<DeviceModel> CreateDeviceAsync(Guid tenantId, CreateDeviceModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Updates an existing device.
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the device against.</param>
     /// <param name="deviceId">The unique identifier of the device to update.</param>
-    /// <param name="updateDeviceModel">The <see cref="UpdateDeviceModel" /> object representing the device to update.</param>
+    /// <param name="model">The <see cref="UpdateDeviceModel" /> object representing the device to update.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    Task UpdateDeviceAsync(Guid tenantId, Guid deviceId, UpdateDeviceModel updateDeviceModel, CancellationToken cancellationToken = default);
+    Task UpdateDeviceAsync(Guid tenantId, Guid deviceId, UpdateDeviceModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deletes a device by its unique identifier.
@@ -72,10 +72,10 @@ public interface IDeviceFacade
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the device against.</param>
     /// <param name="deviceId">The unique identifier of the device for which to create the activity.</param>
-    /// <param name="createDeviceActivityModel">The <see cref="CreateDeviceActivityModel" /> object representing the activity to create.</param>
+    /// <param name="model">The <see cref="CreateDeviceActivityModel" /> object representing the activity to create.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The created <see cref="DeviceActivityModel" /> object.</returns>
-    Task<DeviceActivityModel> CreateDeviceActivityAsync(Guid tenantId, Guid deviceId, CreateDeviceActivityModel createDeviceActivityModel, CancellationToken cancellationToken = default);
+    Task<DeviceActivityModel> CreateDeviceActivityAsync(Guid tenantId, Guid deviceId, CreateDeviceActivityModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deletes a device activity by its unique identifier.

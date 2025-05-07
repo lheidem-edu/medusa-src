@@ -54,22 +54,22 @@ public class DeviceFacade : IDeviceFacade
     }
 
     /// <inheritdoc />
-    public async Task<DeviceModel> CreateDeviceAsync(Guid tenantId, CreateDeviceModel createDeviceModel, CancellationToken cancellationToken = default)
+    public async Task<DeviceModel> CreateDeviceAsync(Guid tenantId, CreateDeviceModel model, CancellationToken cancellationToken = default)
     {
-        var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(createDeviceModel.SerialNumber, cancellationToken);
+        var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(model.SerialNumber, cancellationToken);
 
         if (existingDevice != null)
         {
-            throw new InvalidOperationException($"Device with serial number {createDeviceModel.SerialNumber} already exists.");
+            throw new InvalidOperationException($"Device with serial number {model.SerialNumber} already exists.");
         }
 
         var device = new Device
         {
             TenantId = tenantId,
-            SerialNumber = createDeviceModel.SerialNumber,
-            Name = createDeviceModel.Name,
-            Description = createDeviceModel.Description,
-            Location = createDeviceModel.Location
+            SerialNumber = model.SerialNumber,
+            Name = model.Name,
+            Description = model.Description,
+            Location = model.Location
         };
 
         await _deviceRepository.AddDeviceAsync(device, cancellationToken);
@@ -88,7 +88,7 @@ public class DeviceFacade : IDeviceFacade
     }
 
     /// <inheritdoc />
-    public async Task UpdateDeviceAsync(Guid tenantId, Guid deviceId, UpdateDeviceModel updateDeviceModel,
+    public async Task UpdateDeviceAsync(Guid tenantId, Guid deviceId, UpdateDeviceModel model,
         CancellationToken cancellationToken = default)
     {
         var device = await _deviceRepository.GetDeviceAsync(deviceId, cancellationToken);
@@ -98,21 +98,21 @@ public class DeviceFacade : IDeviceFacade
             throw new KeyNotFoundException($"Device with unique identifier {deviceId} not found.");
         }
 
-        if (!string.IsNullOrWhiteSpace(updateDeviceModel.SerialNumber))
+        if (!string.IsNullOrWhiteSpace(model.SerialNumber))
         {
-            var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(updateDeviceModel.SerialNumber, cancellationToken);
+            var existingDevice = await _deviceRepository.GetDeviceBySerialNumberAsync(model.SerialNumber, cancellationToken);
 
             if (existingDevice != null && existingDevice.Id != deviceId)
             {
-                throw new InvalidOperationException($"Device with serial number {updateDeviceModel.SerialNumber} already exists.");
+                throw new InvalidOperationException($"Device with serial number {model.SerialNumber} already exists.");
             }
 
-            device.SerialNumber = updateDeviceModel.SerialNumber;
+            device.SerialNumber = model.SerialNumber;
         }
 
-        device.Name = updateDeviceModel.Name ?? device.Name;
-        device.Description = updateDeviceModel.Description ?? device.Description;
-        device.Location = updateDeviceModel.Location ?? device.Location;
+        device.Name = model.Name ?? device.Name;
+        device.Description = model.Description ?? device.Description;
+        device.Location = model.Location ?? device.Location;
 
         device.UpdatedAt = DateTime.UtcNow;
 
@@ -184,7 +184,7 @@ public class DeviceFacade : IDeviceFacade
     }
 
     /// <inheritdoc />
-    public async Task<DeviceActivityModel> CreateDeviceActivityAsync(Guid tenantId, Guid deviceId, CreateDeviceActivityModel createDeviceActivityModel,
+    public async Task<DeviceActivityModel> CreateDeviceActivityAsync(Guid tenantId, Guid deviceId, CreateDeviceActivityModel model,
         CancellationToken cancellationToken = default)
     {
         var device = await _deviceRepository.GetDeviceAsync(deviceId, cancellationToken);
@@ -197,7 +197,7 @@ public class DeviceFacade : IDeviceFacade
         var activity = new DeviceActivity
         {
             DeviceId = deviceId,
-            Type = createDeviceActivityModel.Type
+            Type = model.Type
         };
 
         await _deviceRepository.AddDeviceActivityAsync(activity, cancellationToken);

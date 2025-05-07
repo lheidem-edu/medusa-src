@@ -22,18 +22,18 @@ public interface ITenantFacade
     /// <summary>
     ///     Creates a new tenant.
     /// </summary>
-    /// <param name="createTenantModel">The <see cref="CreateTenantModel" /> object representing the tenant to create.</param>
+    /// <param name="model">The <see cref="CreateTenantModel" /> object representing the tenant to create.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The created <see cref="TenantModel" /> object.</returns>
-    Task<TenantModel> CreateTenantAsync(CreateTenantModel createTenantModel, CancellationToken cancellationToken = default);
+    Task<TenantModel> CreateTenantAsync(CreateTenantModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Updates an existing tenant.
     /// </summary>
     /// <param name="tenantId">The unique identifier of the tenant to update.</param>
-    /// <param name="updateTenantModel">The <see cref="UpdateTenantModel" /> object representing the tenant to update.</param>
+    /// <param name="model">The <see cref="UpdateTenantModel" /> object representing the tenant to update.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    Task UpdateTenantAsync(Guid tenantId, UpdateTenantModel updateTenantModel, CancellationToken cancellationToken = default);
+    Task UpdateTenantAsync(Guid tenantId, UpdateTenantModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deletes a tenant by its unique identifier.

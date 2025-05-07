@@ -25,19 +25,19 @@ public interface IWorkplaceFacade
     ///     Creates a new workplace.
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the workplace against.</param>
-    /// <param name="createWorkplaceModel">The <see cref="CreateWorkplaceModel" /> object representing the workplace to created.</param>
+    /// <param name="model">The <see cref="CreateWorkplaceModel" /> object representing the workplace to created.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The created <see cref="WorkplaceModel" /> object.</returns>
-    Task<WorkplaceModel> CreateWorkplaceAsync(Guid tenantId, CreateWorkplaceModel createWorkplaceModel, CancellationToken cancellationToken = default);
+    Task<WorkplaceModel> CreateWorkplaceAsync(Guid tenantId, CreateWorkplaceModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Updates an existing workplace.
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the workplace against.</param>
     /// <param name="workplaceId">The unique identifier of the workplace to update.</param>
-    /// <param name="updateWorkplaceModel">The <see cref="UpdateWorkplaceModel" /> object representing the workplace to update.</param>
+    /// <param name="model">The <see cref="UpdateWorkplaceModel" /> object representing the workplace to update.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    Task UpdateWorkplaceAsync(Guid tenantId, Guid workplaceId, UpdateWorkplaceModel updateWorkplaceModel, CancellationToken cancellationToken = default);
+    Task UpdateWorkplaceAsync(Guid tenantId, Guid workplaceId, UpdateWorkplaceModel model, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deletes a workplace by its unique identifier.

@@ -50,13 +50,13 @@ public class WorkplaceFacade : IWorkplaceFacade
     }
 
     /// <inheritdoc />
-    public async Task<WorkplaceModel> CreateWorkplaceAsync(Guid tenantId, CreateWorkplaceModel createWorkplaceModel, CancellationToken cancellationToken = default)
+    public async Task<WorkplaceModel> CreateWorkplaceAsync(Guid tenantId, CreateWorkplaceModel model, CancellationToken cancellationToken = default)
     {
         var workplace = new Workplace
         {
             TenantId = tenantId,
-            Enabled = createWorkplaceModel.Enabled,
-            Name = createWorkplaceModel.Name,
+            Enabled = model.Enabled,
+            Name = model.Name,
         };
 
         await _workplaceRepository.AddWorkplaceAsync(workplace, cancellationToken);
@@ -73,7 +73,7 @@ public class WorkplaceFacade : IWorkplaceFacade
     }
 
     /// <inheritdoc />
-    public async Task UpdateWorkplaceAsync(Guid tenantId, Guid workplaceId, UpdateWorkplaceModel updateWorkplaceModel,
+    public async Task UpdateWorkplaceAsync(Guid tenantId, Guid workplaceId, UpdateWorkplaceModel model,
         CancellationToken cancellationToken = default)
     {
         var workplace = await _workplaceRepository.GetWorkplaceAsync(workplaceId, cancellationToken);
@@ -83,8 +83,8 @@ public class WorkplaceFacade : IWorkplaceFacade
             throw new InvalidOperationException($"Workplace with unique identifier {workplaceId} not found.");
         }
 
-        workplace.Enabled = updateWorkplaceModel.Enabled ?? workplace.Enabled;
-        workplace.Name = updateWorkplaceModel.Name ?? workplace.Name;
+        workplace.Enabled = model.Enabled ?? workplace.Enabled;
+        workplace.Name = model.Name ?? workplace.Name;
 
         workplace.UpdatedAt = DateTime.UtcNow;
 
