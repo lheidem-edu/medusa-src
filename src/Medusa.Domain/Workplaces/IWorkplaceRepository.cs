@@ -6,13 +6,6 @@ namespace Medusa.Domain.Workplaces;
 public interface IWorkplaceRepository
 {
     /// <summary>
-    ///     Retrieves all workplaces.
-    /// </summary>
-    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    /// <returns>A collection of <see cref="Workplace" /> objects representing all workplaces in the system.</returns>
-    Task<IReadOnlyCollection<Workplace>> GetWorkplacesAsync(CancellationToken cancellationToken = default);
-
-    /// <summary>
     ///     Retrieves all workplaces associated with a specific tenant.
     /// </summary>
     /// <param name="tenantId">The unique identifier of the tenant whose workplaces to retrieve.</param>

@@ -64,25 +64,25 @@ public interface IUserRepository
     /// <summary>
     ///     Adds a new user profile.
     /// </summary>
-    /// <param name="userProfile">The <see cref="UserProfile" /> object representing the user profile to add.</param>
+    /// <param name="profile">The <see cref="UserProfile" /> object representing the user profile to add.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The added <see cref="UserProfile" /> object.</returns>
-    Task<UserProfile> AddUserProfileAsync(UserProfile userProfile, CancellationToken cancellationToken = default);
+    Task<UserProfile> AddUserProfileAsync(UserProfile profile, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Updates an existing user profile.
     /// </summary>
-    /// <param name="userProfile">The <see cref="UserProfile" /> object representing the user profile to update.</param>
+    /// <param name="profile">The <see cref="UserProfile" /> object representing the user profile to update.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
-    Task UpdateUserProfileAsync(UserProfile userProfile, CancellationToken cancellationToken = default);
+    Task UpdateUserProfileAsync(UserProfile profile, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Deletes a user profile by its unique identifier.
     /// </summary>
-    /// <param name="userProfileId">The unique identifier of the user profile to delete.</param>
+    /// <param name="profileId">The unique identifier of the user profile to delete.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A boolean indicating whether the deletion was successful.</returns>
-    Task<bool> DeleteUserProfileAsync(Guid userProfileId, CancellationToken cancellationToken = default);
+    Task<bool> DeleteUserProfileAsync(Guid profileId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Retrieves all user tokens associated with a specific user.
