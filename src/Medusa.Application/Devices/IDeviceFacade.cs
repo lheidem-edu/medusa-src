@@ -62,10 +62,10 @@ public interface IDeviceFacade
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the device against.</param>
     /// <param name="deviceId">The unique identifier of the device whose activity to retrieve.</param>
-    /// <param name="deviceActivityId">The unique identifier of the device activity to retrieve.</param>
+    /// <param name="activityId">The unique identifier of the device activity to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="DeviceActivityModel" /> object representing the device activity with the specified identifier, or null if not found.</returns>
-    Task<DeviceActivityModel> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId, CancellationToken cancellationToken = default);
+    Task<DeviceActivityModel> GetDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid activityId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a new device activity.
@@ -82,8 +82,8 @@ public interface IDeviceFacade
     /// </summary>
     /// <param name="tenantId">The unique identifier to check the device against.</param>
     /// <param name="deviceId">The unique identifier of the device whose activity to delete.</param>
-    /// <param name="deviceActivityId">The unique identifier of the device activity to delete.</param>
+    /// <param name="activityId">The unique identifier of the device activity to delete.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A boolean indicating whether the deletion was successful.</returns>
-    Task<bool> DeleteDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid deviceActivityId, CancellationToken cancellationToken = default);
+    Task<bool> DeleteDeviceActivityAsync(Guid tenantId, Guid deviceId, Guid activityId, CancellationToken cancellationToken = default);
 }
