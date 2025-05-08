@@ -6,6 +6,14 @@ namespace Medusa.Domain.Identity;
 public interface IUserRepository
 {
     /// <summary>
+    ///     Retrieves all users associated with a specific tenant.
+    /// </summary>
+    /// <param name="tenantId">The unique identifier of the tenant whose users to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>A collection of <see cref="User" /> objects representing all users associated with the specified tenant.</returns>
+    Task<IReadOnlyCollection<User>> GetUsersAsync(Guid tenantId, CancellationToken cancellationToken = default);
+
+    /// <summary>
     ///     Retrieves a user by its unique identifier.
     /// </summary>
     /// <param name="userId">The unique identifier of the user to retrieve.</param>
@@ -75,6 +83,22 @@ public interface IUserRepository
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A boolean indicating whether the deletion was successful.</returns>
     Task<bool> DeleteUserProfileAsync(Guid userProfileId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Retrieves all user tokens associated with a specific user.
+    /// </summary>
+    /// <param name="userId">The unique identifier of the user whose tokens to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>A collection of <see cref="UserToken" /> objects representing all tokens associated with the specified user.</returns>
+    Task<IReadOnlyCollection<UserToken>> GetUserTokensAsync(Guid userId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Retrieves a user token by its unique identifier.
+    /// </summary>
+    /// <param name="tokenId">The unique identifier of the token to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>A <see cref="UserToken" /> object representing the user token with the specified identifier, or null if not found.</returns>
+    Task<UserToken?> GetUserTokenAsync(Guid tokenId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Retrieves a user token by its hash.
