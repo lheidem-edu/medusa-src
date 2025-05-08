@@ -16,18 +16,18 @@ public class PasswordHasher : IPasswordHasher
     }
 
     /// <inheritdoc />
-    public bool VerifyHash(string password, string hashedPassword)
+    public bool VerifyHash(string password, string hash)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
             throw new ArgumentException("Password cannot be null or empty.", nameof(password));
         }
 
-        if (string.IsNullOrWhiteSpace(hashedPassword))
+        if (string.IsNullOrWhiteSpace(hash))
         {
-            throw new ArgumentException("Hashed password cannot be null or empty.", nameof(hashedPassword));
+            throw new ArgumentException("Hash cannot be null or empty.", nameof(hash));
         }
 
-        return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        return BCrypt.Net.BCrypt.Verify(password, hash);
     }
 }

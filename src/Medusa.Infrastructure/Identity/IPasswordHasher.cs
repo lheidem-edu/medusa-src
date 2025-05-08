@@ -13,7 +13,7 @@ public interface IPasswordHasher
     ///     Verifies a password against a hashed password using bcrypt.
     /// </summary>
     /// <param name="password">The password to verify.</param>
-    /// <param name="hashedPassword">The hashed password to verify against.</param>
+    /// <param name="hash">The hash to verify against.</param>
     /// <returns>A boolean indicating whether the password matches the hashed password.</returns>
-    bool VerifyHash(string password, string hashedPassword);
+    bool VerifyHash(string password, string hash);
 }
