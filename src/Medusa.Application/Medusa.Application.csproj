@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Medusa.Infrastructure\Medusa.Infrastructure.csproj" />
       <ProjectReference Include="..\Medusa.Domain\Medusa.Domain.csproj" />
       <ProjectReference Include="..\Medusa.Infrastructure\Medusa.Infrastructure.csproj" />
       <ProjectReference Include="..\Medusa.Presentation\Medusa.Presentation.csproj" />
