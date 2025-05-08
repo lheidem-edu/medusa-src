@@ -14,7 +14,7 @@ public class PasswordHasher : IPasswordHasher
     private const int ARGON2_ITERATIONS = 4;
 
     /// <inheritdoc />
-    public async Task<string> ComputeHash(string password, CancellationToken cancellation = default)
+    public async Task<string> ComputeHashAsync(string password, CancellationToken cancellation = default)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
@@ -44,7 +44,7 @@ public class PasswordHasher : IPasswordHasher
     }
 
     /// <inheritdoc />
-    public async Task<bool> VerifyHash(string password, string saltedHash, CancellationToken cancellation = default)
+    public async Task<bool> VerifyHashAsync(string password, string saltedHash, CancellationToken cancellation = default)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
