@@ -5,7 +5,7 @@ namespace Medusa.Presentation.Identity;
 public class UserModel
 {
     [JsonPropertyName("user_id")]
-    public required Guid Id { get; set; }
+    public required Guid Id { get; init; }
 
     [JsonPropertyName("user_tenant_id")]
     public required Guid TenantId { get; set; }
