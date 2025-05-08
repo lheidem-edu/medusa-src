@@ -103,10 +103,10 @@ public interface IUserRepository
     /// <summary>
     ///     Retrieves a user token by its hash.
     /// </summary>
-    /// <param name="hash">The hash of the user token to retrieve.</param>
+    /// <param name="digest">The digest of the user token to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="UserToken" /> object representing the user token with the specified hash, or null if not found.</returns>
-    Task<UserToken?> GetUserTokenByHashAsync(string hash, CancellationToken cancellationToken = default);
+    Task<UserToken?> GetUserTokenByDigestAsync(string digest, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Adds a new user token.

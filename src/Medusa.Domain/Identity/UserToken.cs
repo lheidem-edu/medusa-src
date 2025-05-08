@@ -23,8 +23,8 @@ public class UserToken : IAuditable, IIdentifiable
     /// <summary>
     ///     The token hash.
     /// </summary>
-    [Column("user_token_hash")]
-    public required string Hash { get; set; }
+    [Column("user_token_digest")]
+    public required string Digest { get; set; }
 
     /// <summary>
     ///     The user agent string of the client that created the token.
