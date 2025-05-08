@@ -27,10 +27,16 @@ public class UserToken : IAuditable, IIdentifiable
     public required string Hash { get; set; }
 
     /// <summary>
+    ///     The user agent string of the client that created the token.
+    /// </summary>
+    public required string UserAgent { get; set; }
+
+    /// <summary>
     ///     The date and time when the token expires.
     /// </summary>
     [Column("user_token_expires_at")]
     public required DateTime ExpiresAt { get; set; }
+
 
     /// <summary>
     ///     The date and time when the token was created.
