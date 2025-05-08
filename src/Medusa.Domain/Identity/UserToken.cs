@@ -29,6 +29,7 @@ public class UserToken : IAuditable, IIdentifiable
     /// <summary>
     ///     The user agent string of the client that created the token.
     /// </summary>
+    [Column("user_token_user_agent")]
     public required string UserAgent { get; set; }
 
     /// <summary>
