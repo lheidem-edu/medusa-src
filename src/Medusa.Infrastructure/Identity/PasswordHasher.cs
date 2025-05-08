@@ -14,7 +14,7 @@ public class PasswordHasher : IPasswordHasher
     private const int ARGON2_ITERATIONS = 4;
 
     /// <inheritdoc />
-    public async Task<string> ComputeHashAsync(string password, CancellationToken cancellation = default)
+    public string ComputeHash(string password)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
@@ -31,7 +31,7 @@ public class PasswordHasher : IPasswordHasher
             Salt = salt,
         };
 
-        var hash = await argon2.GetBytesAsync(HASH_SIZE);
+        var hash = argon2.GetBytes(HASH_SIZE);
 
         var computed = new byte[SALT_SIZE + HASH_SIZE];
 
@@ -44,7 +44,7 @@ public class PasswordHasher : IPasswordHasher
     }
 
     /// <inheritdoc />
-    public async Task<bool> VerifyHashAsync(string password, string saltedHash, CancellationToken cancellation = default)
+    public bool VerifyHash(string password, string saltedHash)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
@@ -77,7 +77,7 @@ public class PasswordHasher : IPasswordHasher
             Salt = salt,
         };
 
-        var computed = await argon2.GetBytesAsync(HASH_SIZE);
+        var computed = argon2.GetBytes(HASH_SIZE);
 
         for (int i = 0; i < HASH_SIZE; i++)
         {
