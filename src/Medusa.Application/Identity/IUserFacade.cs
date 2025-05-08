@@ -35,18 +35,20 @@ public interface IUserFacade
     /// </summary>
     /// <param name="tenantId">The unique identifier for the tenant.</param>
     /// <param name="model">The <see cref="LoginUserModel" /> object containing the user's login credentials.</param>
+    /// <param name="userAgent">The user agent string of the client that is logging in the user.</param>
     /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A string representing the authentication token for the logged-in user.</returns>
-    Task<string> LoginUserAsync(Guid tenantId, LoginUserModel model, CancellationToken cancellationToken = default);
+    Task<string> LoginUserAsync(Guid tenantId, LoginUserModel model, string userAgent, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Registers a new user using their email address and password.
     /// </summary>
     /// <param name="tenantId">The unique identifier for the tenant.</param>
     /// <param name="model">The <see cref="RegisterUserModel" /> object containing the user's registration information.</param>
-    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>#
+    /// <param name="userAgent">The user agent string of the client that is registering the user.</param>
     /// <returns>A string representing the authentication token for the registered user.</returns>
-    Task<string> RegisterUserAsync(Guid tenantId, RegisterUserModel model, CancellationToken cancellationToken = default);
+    Task<string> RegisterUserAsync(Guid tenantId, RegisterUserModel model, string userAgent, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Retrieves a user profile by the user's unique identifier.

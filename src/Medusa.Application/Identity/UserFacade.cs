@@ -76,7 +76,7 @@ public class UserFacade : IUserFacade
     }
 
     /// <inheritdoc />
-    public async Task<string> LoginUserAsync(Guid tenantId, LoginUserModel model, CancellationToken cancellationToken = default)
+    public async Task<string> LoginUserAsync(Guid tenantId, LoginUserModel model, string userAgent, CancellationToken cancellationToken = default)
     {
         var user = await _userRepository.GetUserByEmailAddressAsync(tenantId, model.EmailAddress, cancellationToken);
 
@@ -85,13 +85,13 @@ public class UserFacade : IUserFacade
             throw new KeyNotFoundException($"User with email address {model.EmailAddress} not found.");
         }
 
-        var token = await _tokenFacade.GenerateTokenAsync(user, "TODO - useragent", cancellationToken);
+        var token = await _tokenFacade.GenerateTokenAsync(user, userAgent, cancellationToken);
         return token;
     }
 
     /// <inheritdoc />
     public async Task<string> RegisterUserAsync(Guid tenantId, RegisterUserModel model,
-        CancellationToken cancellationToken = default)
+        string userAgent, CancellationToken cancellationToken = default)
     {
         var existingUser = await _userRepository.GetUserByEmailAddressAsync(tenantId, model.EmailAddress, cancellationToken);
 
@@ -111,7 +111,7 @@ public class UserFacade : IUserFacade
 
         await _userRepository.AddUserAsync(user, cancellationToken);
 
-        var token = await _tokenFacade.GenerateTokenAsync(user, "TODO- useragent", cancellationToken);
+        var token = await _tokenFacade.GenerateTokenAsync(user, userAgent, cancellationToken);
         return token;
     }
 
